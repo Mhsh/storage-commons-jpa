@@ -1,0 +1,14 @@
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/repository/JpaClientRepository.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/repository/JpaSubscriptionPropertyRepository.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/Enums.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/JpaConnectorMetadata.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/JpaSubscriptionProperty.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/BaseEntity.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/JpaConnector.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/JpaSubscription.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/repository/JpaConnectorRepository.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/JpaMapping.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/repository/JpaMappingRepository.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/repository/JpaConnectorMetadataRepository.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/repository/JpaSubscriptionRepository.java
+/Users/my/work/storage-commons-jpa/src/main/java/com/storage/jpa/JpaClient.java
