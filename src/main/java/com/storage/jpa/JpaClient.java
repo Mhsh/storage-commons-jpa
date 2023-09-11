@@ -34,12 +34,6 @@ public class JpaClient extends BaseEntity {
 	private String description;
 
 	/**
-	 * The file location for raw data associated with the client.
-	 */
-	@Column(name = "rawFilelocation")
-	private String rawFileLocation;
-
-	/**
 	 * A set of subscriptions associated with the client.
 	 */
 	@OneToMany(mappedBy = "client")
@@ -94,33 +88,6 @@ public class JpaClient extends BaseEntity {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	/**
-	 * Get the file location for raw data associated with the client.
-	 *
-	 * @return The file location for raw data.
-	 */
-	public String getRawFileLocation() {
-		return rawFileLocation;
-	}
-
-	/**
-	 * Set the file location for raw data associated with the client.
-	 *
-	 * @param rawFileLocation The file location for raw data to set.
-	 */
-	public void setRawFileLocation(String rawFileLocation) {
-		this.rawFileLocation = rawFileLocation;
-	}
-
-	/**
-	 * Get the set of subscriptions associated with the client.
-	 *
-	 * @return The set of subscriptions.
-	 */
-	public Set<JpaSubscription> getSubscriptions() {
-		return subscriptions;
 	}
 
 	/**
