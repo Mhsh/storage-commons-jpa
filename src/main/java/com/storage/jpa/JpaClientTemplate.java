@@ -15,7 +15,7 @@ import javax.persistence.Table;
  * JSON template stored as a JSON data type. The unique identifier for this entity is 'id'.
  */
 @Entity
-@Table(name = "jpa_client_template")
+@Table(name = "client_template")
 public class JpaClientTemplate {
 
     /**
@@ -36,7 +36,7 @@ public class JpaClientTemplate {
     /**
      * The JSON template stored as a JSON data type.
      */
-    @Column(name = "template", columnDefinition = "jsonb")
+    @Column(name = "template", columnDefinition = "TEXT")
     private String template;
 
     /**

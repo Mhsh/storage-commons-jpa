@@ -30,5 +30,5 @@ public interface JpaClientTemplateRepository extends JpaRepository<JpaClientTemp
 	 * @param clientId The unique identifier of the client.
 	 * @return A list of client templates associated with the specified client ID.
 	 */
-	List<JpaClientTemplate> findAllByClient_Id(Long clientId);
+	List<JpaClientTemplate> findAllByClient_Id(String clientId);
 }

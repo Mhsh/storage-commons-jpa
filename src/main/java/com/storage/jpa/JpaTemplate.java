@@ -23,7 +23,7 @@ public class JpaTemplate {
 	/**
 	 * JSON template stored as a string with the "jsonb" column definition.
 	 */
-	@Column(name = "template", columnDefinition = "jsonb")
+	@Column(name = "template", columnDefinition = "TEXT")
 	private String template;
 
 	/**
