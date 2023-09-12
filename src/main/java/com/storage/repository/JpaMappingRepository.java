@@ -9,11 +9,18 @@ import com.storage.jpa.JpaSubscription;
 
 /**
  * The JpaMappingRepository interface provides data access methods for
- * interacting with JpaMapping entities in the database. It extends
- * the JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
+ * interacting with JpaMapping entities in the database. It extends the
+ * JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaClient entities.
  */
 public interface JpaMappingRepository extends JpaRepository<JpaMapping, Long> {
 
+	/**
+	 * Retrieves a list of JPA mappings associated with a specific subscription.
+	 *
+	 * @param subscription The subscription for which to retrieve mappings.
+	 * @return A list of JPA mappings associated with the specified subscription, or
+	 *         an empty list if none are found.
+	 */
 	List<JpaMapping> findBySubscription(JpaSubscription subscription);
 }

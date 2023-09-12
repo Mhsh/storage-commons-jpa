@@ -98,4 +98,9 @@ public class JpaClient extends BaseEntity {
 	public void setSubscriptions(Set<JpaSubscription> subscriptions) {
 		this.subscriptions = subscriptions;
 	}
+
+	public Set<JpaSubscription> getSubscriptions() {
+		return subscriptions;
+	}
+
 }
