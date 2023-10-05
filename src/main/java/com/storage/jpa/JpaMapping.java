@@ -18,8 +18,8 @@ import com.storage.BaseEntity;
  * subscriptions and keys.
  */
 @Entity
-@Table(name = "subscription_mapping")
-public class JpaMapping extends BaseEntity{
+@Table(name = "etl_subscription_mapping")
+public class JpaMapping extends BaseEntity {
 	/**
 	 * The unique identifier for the mapping.
 	 */
@@ -37,19 +37,19 @@ public class JpaMapping extends BaseEntity{
 	/**
 	 * The source key associated with the mapping.
 	 */
-	@Column(name = "sourcekey")
+	@Column(name = "sourcekey", nullable = false)
 	private String sourcekey;
 
 	/**
 	 * The internal key associated with the mapping.
 	 */
-	@Column(name = "internalkey")
+	@Column(name = "internalkey", nullable = false)
 	private String internalkey;
 
 	/**
 	 * The type of mapping.
 	 */
-	@Column(name = "type")
+	@Column(name = "type", nullable = false)
 	private String type;
 
 	/**

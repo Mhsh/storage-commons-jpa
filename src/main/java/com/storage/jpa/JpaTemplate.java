@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * database. Each template has a unique identifier (ID) and a JSON template.
  */
 @Entity
-@Table(name = "template")
+@Table(name = "etl_template")
 public class JpaTemplate {
 
 	/**
@@ -23,7 +23,7 @@ public class JpaTemplate {
 	/**
 	 * JSON template stored as a string with the "jsonb" column definition.
 	 */
-	@Column(name = "template", columnDefinition = "TEXT")
+	@Column(name = "template", columnDefinition = "TEXT", nullable = false)
 	private String template;
 
 	/**

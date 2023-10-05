@@ -2,6 +2,7 @@ package com.storage.jpa;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ import com.storage.BaseEntity;
  */
 @Entity
 @Table(name = "connector_metadata")
-public class JpaConnectorMetadata extends BaseEntity{
+public class JpaConnectorMetadata extends BaseEntity {
 
 	/**
 	 * The unique identifier for the metadata.
@@ -39,11 +40,13 @@ public class JpaConnectorMetadata extends BaseEntity{
 	/**
 	 * The key associated with the metadata.
 	 */
+	@Column(nullable = false)
 	private String key;
 
 	/**
 	 * Indicates whether the metadata is multi-valued (true) or not (false).
 	 */
+	@Column(nullable = false)
 	private boolean multiValued;
 
 	/**

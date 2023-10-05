@@ -2,6 +2,8 @@ package com.storage.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.storage.jpa.JpaMapping;
@@ -23,4 +25,7 @@ public interface JpaMappingRepository extends JpaRepository<JpaMapping, Long> {
 	 *         an empty list if none are found.
 	 */
 	List<JpaMapping> findBySubscription(JpaSubscription subscription);
+
+	@Transactional
+	public void deleteBySubscription(JpaSubscription subscription);
 }

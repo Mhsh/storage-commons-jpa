@@ -1,11 +1,9 @@
 package com.storage.jpa;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -15,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import com.storage.BaseEntity;
@@ -52,22 +48,10 @@ public class JpaSubscription extends BaseEntity {
 	private JpaConnector connector;
 
 	/**
-	 * The set of subscription properties associated with the subscription.
+	 * A set of metadata associated with the connector.
 	 */
 	@OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private Set<JpaSubscriptionProperty> properties = new HashSet<>();
-
-	/**
-	 * The duration of the subscription.
-	 */
-	@Column(name = "duration")
-	private Integer duration;
-
-	/**
-	 * The date of the next scheduled event for the subscription.
-	 */
-	@Column(name = "nextSchedule")
-	private Date nextSchedule;
+	private Set<JpaSubscriptionDetail> metadata = new HashSet<>();
 
 	/**
 	 * Default constructor for JpaSubscription.
@@ -140,71 +124,4 @@ public class JpaSubscription extends BaseEntity {
 		this.connector = connector;
 	}
 
-	/**
-	 * Get the set of subscription properties associated with the subscription.
-	 *
-	 * @return The set of properties.
-	 */
-	public Set<JpaSubscriptionProperty> getProperties() {
-		return properties;
-	}
-
-	/**
-	 * Set the set of subscription properties associated with the subscription.
-	 *
-	 * @param properties The set of properties to set.
-	 */
-	public void setProperties(Set<JpaSubscriptionProperty> properties) {
-		this.properties = properties;
-	}
-
-	/**
-	 * Get the duration of the subscription.
-	 *
-	 * @return The subscription duration.
-	 */
-	public Integer getDuration() {
-		return duration;
-	}
-
-	/**
-	 * Set the duration of the subscription.
-	 *
-	 * @param duration The subscription duration to set.
-	 */
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-
-	/**
-	 * Get the date of the next scheduled event for the subscription.
-	 *
-	 * @return The next scheduled event date.
-	 */
-	public Date getNextSchedule() {
-		return nextSchedule;
-	}
-
-	/**
-	 * Set the date of the next scheduled event for the subscription.
-	 *
-	 * @param nextSchedule The next scheduled event date to set.
-	 */
-	public void setNextSchedule(Date nextSchedule) {
-		this.nextSchedule = nextSchedule;
-	}
-
-	/**
-	 * A callback method called before persisting and updating the subscription to
-	 * validate connector metadata.
-	 */
-	@PrePersist
-	@PreUpdate
-	private void validateConnectorMetadata() {
-		for (JpaSubscriptionProperty property : properties) {
-			if (!connector.getMetadata().contains(property.getConnectorMetadata())) {
-				throw new IllegalArgumentException("ConnectorMetadata does not belong to the subscribed connector");
-			}
-		}
-	}
 }
