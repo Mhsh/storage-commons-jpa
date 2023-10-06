@@ -1,6 +1,6 @@
 package com.storage.jpa;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,8 +41,14 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	/**
 	 * The date of the next scheduled event for the subscription.
 	 */
-	@Column(name = "nextSchedule", nullable = false)
-	private Date nextSchedule;
+	@Column(name = "subscriptionDetail", columnDefinition = "timestamp with time zone")
+	private OffsetDateTime nextExecution;
+
+	/**
+	 * The date of the next scheduled event for the subscription.
+	 */
+	@Column(name = "lastExecution", columnDefinition = "timestamp with time zone")
+	private OffsetDateTime lastExecution;
 
 	@Column(name = "rawFileLocation", nullable = false)
 	private String rawFileLocation;
@@ -110,17 +116,18 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	/**
 	 * @return the nextSchedule
 	 */
-	public Date getNextSchedule() {
-		return nextSchedule;
+	public OffsetDateTime getNextExecution() {
+		return nextExecution;
 	}
 
 	/**
 	 * @param nextSchedule the nextSchedule to set
 	 */
-	public void setNextSchedule(Date nextSchedule) {
-		this.nextSchedule = nextSchedule;
+	public void setNextExecution(OffsetDateTime nextExecution) {
+		this.nextExecution = nextExecution;
 	}
 
+	
 	/**
 	 * @return the rawFileLocation
 	 */
@@ -161,6 +168,20 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	 */
 	public void setSubscription(JpaSubscription subscription) {
 		this.subscription = subscription;
+	}
+
+	/**
+	 * @return the lastExecution
+	 */
+	public OffsetDateTime getLastExecution() {
+		return lastExecution;
+	}
+
+	/**
+	 * @param lastExecution the lastExecution to set
+	 */
+	public void setLastExecution(OffsetDateTime lastExecution) {
+		this.lastExecution = lastExecution;
 	}
 
 }

@@ -5,13 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.storage.BaseEntity;
+
 /**
  * Represents a JPA entity for storing templates with JSON data in a PostgreSQL
  * database. Each template has a unique identifier (ID) and a JSON template.
  */
 @Entity
 @Table(name = "etl_template")
-public class JpaTemplate {
+public class JpaTemplate extends BaseEntity{
 
 	/**
 	 * Unique identifier for the template.

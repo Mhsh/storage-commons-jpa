@@ -1,5 +1,7 @@
 package com.storage.jpa;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.storage.BaseEntity;
+
 @Entity
 @Table(name = "rss_digest")
-public class JpaRssDigest {
+public class JpaRssDigest extends BaseEntity {
 
 	/**
 	 * The unique identifier for the mapping.
@@ -20,17 +24,20 @@ public class JpaRssDigest {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "title", nullable = false)
+	@Column(name = "title")
 	private String title;
 
-	@Column(name = "description", nullable = false)
+	@Column(name = "description")
 	private String description;
 
-	@Column(name = "link", nullable = false)
+	@Column(name = "link")
 	private String link;
 
-	@Column(name = "guid", nullable = false)
+	@Column(name = "guid")
 	private String guid;
+
+	@Column(name = "pubDate")
+	private Date pubDate;
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")
@@ -118,6 +125,20 @@ public class JpaRssDigest {
 	 */
 	public void setSubscription(JpaSubscription subscription) {
 		this.subscription = subscription;
+	}
+
+	/**
+	 * @return the pubDate
+	 */
+	public Date getPubDate() {
+		return pubDate;
+	}
+
+	/**
+	 * @param pubDate the pubDate to set
+	 */
+	public void setPubDate(Date pubDate) {
+		this.pubDate = pubDate;
 	}
 
 }

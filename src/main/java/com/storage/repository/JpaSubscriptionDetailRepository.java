@@ -1,6 +1,6 @@
 package com.storage.repository;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,13 +19,19 @@ import com.storage.jpa.JpaSubscriptionDetail;
  * (Create, Read, Update, Delete) operations for JpaClient entities.
  */
 public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscriptionDetail, Long> {
-	
+
 	List<JpaSubscriptionDetail> findBySubscription(JpaSubscription subscription);
 
-	List<JpaSubscriptionDetail> findByNextScheduleBefore(Date currentDate);
+	List<JpaSubscriptionDetail> findByNextScheduleBefore(OffsetDateTime currentDate);
 
 	@Transactional
 	@Modifying
 	@Query("UPDATE JpaSubscriptionDetail s SET s.content = :content, s.updatedDate = CURRENT_TIMESTAMP WHERE s.id = :id")
 	void updateContentById(@Param("id") Long id, @Param("content") String content);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE JpaSubscriptionDetail s SET s.nextSchedule = :nextSchedule, s.lastExecution = :lastExecution, s.duration = :duration WHERE s.id = :id")
+	void updateNextExecution(@Param("id") Long id, @Param("nextSchedule") OffsetDateTime nextSchedule,
+			@Param("lastExecution") OffsetDateTime lastExecution, Integer duration);
 }

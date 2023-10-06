@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.storage.BaseEntity;
+
 /**
  * The JpaClientTemplate class represents an entity in a Java Persistence API
  * (JPA) application. This entity is associated with a JpaClient through a
@@ -17,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "etl_client_template")
-public class JpaClientTemplate {
+public class JpaClientTemplate extends BaseEntity {
 
 	/**
 	 * The unique identifier for the entity.

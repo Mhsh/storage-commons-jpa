@@ -1,5 +1,7 @@
 package com.storage.repository;
 
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,6 +31,9 @@ public interface JpaRssDigestRepository extends JpaRepository<JpaRssDigest, Long
 
 	// Custom query to check if guid already exists
 	boolean existsByGuidAndSubscription(String guid, JpaSubscription subscription);
+
+	// Custom query to check if guid already exists
+	boolean existsByPubdateAndSubscription(Date pubDate, JpaSubscription subscription);
 
 	JpaRssDigest findByGuid(String uri);
 

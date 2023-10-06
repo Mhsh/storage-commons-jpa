@@ -1,13 +1,11 @@
 package com.storage;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * The BaseEntity class serves as a base class for entities in a Java
@@ -20,16 +18,14 @@ public class BaseEntity {
 	/**
 	 * The timestamp when the entity was created.
 	 */
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date", nullable = false, updatable = false)
-	private Date createdDate;
+	@Column(name = "created_date", nullable = false, updatable = false, columnDefinition = "timestamp with time zone")
+	private OffsetDateTime createdDate;
 
 	/**
 	 * The timestamp when the entity was last updated.
 	 */
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_date", nullable = false)
-	private Date updatedDate;
+	@Column(name = "updated_date", nullable = false,columnDefinition = "timestamp with time zone")
+	private OffsetDateTime updatedDate;
 
 	/**
 	 * Default constructor for BaseEntity.
@@ -43,8 +39,8 @@ public class BaseEntity {
 	 */
 	@PrePersist
 	protected void onCreate() {
-		createdDate = new Date();
-		updatedDate = createdDate;
+		createdDate = OffsetDateTime.now();
+		updatedDate = OffsetDateTime.now();
 	}
 
 	/**
@@ -53,7 +49,7 @@ public class BaseEntity {
 	 */
 	@PreUpdate
 	protected void onUpdate() {
-		updatedDate = new Date();
+		updatedDate = OffsetDateTime.now();
 	}
 
 	/**
@@ -61,7 +57,7 @@ public class BaseEntity {
 	 *
 	 * @return The creation timestamp.
 	 */
-	public Date getCreatedDate() {
+	public OffsetDateTime getCreatedDate() {
 		return createdDate;
 	}
 
@@ -70,7 +66,7 @@ public class BaseEntity {
 	 *
 	 * @param createdDate The creation timestamp to set.
 	 */
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(OffsetDateTime createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -79,7 +75,7 @@ public class BaseEntity {
 	 *
 	 * @return The last update timestamp.
 	 */
-	public Date getUpdatedDate() {
+	public OffsetDateTime getUpdatedDate() {
 		return updatedDate;
 	}
 
@@ -88,7 +84,7 @@ public class BaseEntity {
 	 *
 	 * @param updatedDate The last update timestamp to set.
 	 */
-	public void setUpdatedDate(Date updatedDate) {
+	public void setUpdatedDate(OffsetDateTime updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 }
