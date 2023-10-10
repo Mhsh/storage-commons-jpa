@@ -22,7 +22,7 @@ public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscr
 
 	List<JpaSubscriptionDetail> findBySubscription(JpaSubscription subscription);
 
-	List<JpaSubscriptionDetail> findByNextScheduleBefore(OffsetDateTime currentDate);
+	List<JpaSubscriptionDetail> findByNextExecutionBefore(OffsetDateTime currentDate);
 
 	@Transactional
 	@Modifying
@@ -31,7 +31,7 @@ public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscr
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE JpaSubscriptionDetail s SET s.nextSchedule = :nextSchedule, s.lastExecution = :lastExecution, s.duration = :duration WHERE s.id = :id")
-	void updateNextExecution(@Param("id") Long id, @Param("nextSchedule") OffsetDateTime nextSchedule,
+	@Query("UPDATE JpaSubscriptionDetail s SET s.nextExecution = :nextExecution, s.lastExecution = :lastExecution, s.duration = :duration WHERE s.id = :id")
+	void updateNextExecution(@Param("id") Long id, @Param("nextExecution") OffsetDateTime nextExecution,
 			@Param("lastExecution") OffsetDateTime lastExecution, Integer duration);
 }

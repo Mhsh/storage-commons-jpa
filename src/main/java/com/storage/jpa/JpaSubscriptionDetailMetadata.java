@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "subscription_detail_metadata")
+@Table(name = "subscription_detail_metadata",
+uniqueConstraints = @UniqueConstraint(columnNames = {"metadata_key", "subscription_detail"}))
 public class JpaSubscriptionDetailMetadata {
 
 	/**
@@ -21,7 +23,7 @@ public class JpaSubscriptionDetailMetadata {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "subscription_detail")
+	@JoinColumn(name = "subscription_detail_id")
 	private JpaSubscriptionDetail subscriptionDetail; // Many-to-one relationship to Subscription
 
 	@Column(name = "metadata_key")

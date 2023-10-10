@@ -44,12 +44,6 @@ public class JpaConnectorMetadata extends BaseEntity {
 	private String key;
 
 	/**
-	 * Indicates whether the metadata is multi-valued (true) or not (false).
-	 */
-	@Column(nullable = false)
-	private boolean multiValued;
-
-	/**
 	 * Default constructor for JpaConnectorMetadata.
 	 */
 	public JpaConnectorMetadata() {
@@ -64,10 +58,9 @@ public class JpaConnectorMetadata extends BaseEntity {
 	 * @param multiValued Indicates whether the metadata is multi-valued (true) or
 	 *                    not (false).
 	 */
-	public JpaConnectorMetadata(String key, boolean multiValued) {
+	public JpaConnectorMetadata(String key) {
 		super();
 		this.key = key;
-		this.multiValued = multiValued;
 	}
 
 	/**
@@ -104,24 +97,6 @@ public class JpaConnectorMetadata extends BaseEntity {
 	 */
 	public void setKey(String key) {
 		this.key = key;
-	}
-
-	/**
-	 * Check if the metadata is multi-valued.
-	 *
-	 * @return true if the metadata is multi-valued, false otherwise.
-	 */
-	public boolean isMultiValued() {
-		return multiValued;
-	}
-
-	/**
-	 * Set whether the metadata is multi-valued or not.
-	 *
-	 * @param multiValued true if the metadata is multi-valued, false otherwise.
-	 */
-	public void setMultiValued(boolean multiValued) {
-		this.multiValued = multiValued;
 	}
 
 	/**

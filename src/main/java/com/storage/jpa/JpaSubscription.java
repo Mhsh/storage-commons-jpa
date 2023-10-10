@@ -37,7 +37,7 @@ public class JpaSubscription extends BaseEntity {
 	 * The client associated with the subscription.
 	 */
 	@ManyToOne
-	@JoinColumn(name = "client_name", referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "fk_client_id"))
+	@JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "fk_client_id"))
 	private JpaClient client;
 
 	/**

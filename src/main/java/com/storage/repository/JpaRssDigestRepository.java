@@ -33,7 +33,7 @@ public interface JpaRssDigestRepository extends JpaRepository<JpaRssDigest, Long
 	boolean existsByGuidAndSubscription(String guid, JpaSubscription subscription);
 
 	// Custom query to check if guid already exists
-	boolean existsByPubdateAndSubscription(Date pubDate, JpaSubscription subscription);
+	boolean existsByPubDateAndSubscription(Date pubDate, JpaSubscription subscription);
 
 	JpaRssDigest findByGuid(String uri);
 

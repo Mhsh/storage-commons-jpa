@@ -41,7 +41,7 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	/**
 	 * The date of the next scheduled event for the subscription.
 	 */
-	@Column(name = "subscriptionDetail", columnDefinition = "timestamp with time zone")
+	@Column(name = "nextExecution", columnDefinition = "timestamp with time zone")
 	private OffsetDateTime nextExecution;
 
 	/**
@@ -55,6 +55,9 @@ public class JpaSubscriptionDetail extends BaseEntity {
 
 	@Column(name = "content")
 	private String content;
+
+	@Column(name = "blacklist")
+	private Boolean blacklist;
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")
@@ -127,7 +130,6 @@ public class JpaSubscriptionDetail extends BaseEntity {
 		this.nextExecution = nextExecution;
 	}
 
-	
 	/**
 	 * @return the rawFileLocation
 	 */
@@ -182,6 +184,20 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	 */
 	public void setLastExecution(OffsetDateTime lastExecution) {
 		this.lastExecution = lastExecution;
+	}
+
+	/**
+	 * @return the blacklist
+	 */
+	public Boolean isBlacklist() {
+		return blacklist;
+	}
+
+	/**
+	 * @param blacklist the blacklist to set
+	 */
+	public void setBlacklist(Boolean blacklist) {
+		this.blacklist = blacklist;
 	}
 
 }
