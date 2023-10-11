@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.storage.jpa.JpaSubscriptionDetail;
@@ -24,7 +25,8 @@ public interface JpaSubscriptionDetailMetadataRepository extends JpaRepository<J
 	@Modifying
 	@Transactional
 	@Query("DELETE FROM JpaSubscriptionDetailMetadata s WHERE s.metadataKey = :metadataKey AND s.subscriptionDetail = :subscriptionDetail")
-	void deleteByKeyAndSubscriptionDetail(String metadataKey, JpaSubscriptionDetail subscriptionDetail);
+	void deleteByKeyAndSubscriptionDetail(@Param("metadataKey") String metadataKey,
+			@Param("subscriptionDetail") JpaSubscriptionDetail subscriptionDetail);
 
 	default void createNewMetadata(String metadataKey, String metadataValue, JpaSubscriptionDetail subscriptionDetail) {
 		deleteByKeyAndSubscriptionDetail(metadataKey, subscriptionDetail);

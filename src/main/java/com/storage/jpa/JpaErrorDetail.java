@@ -21,10 +21,10 @@ public class JpaErrorDetail {
 	@JoinColumn(name = "subscription_detail_id")
 	private JpaSubscriptionDetail subscriptionDetail;
 
-	@Column(name = "type")
+	@Column(name = "type", columnDefinition = "text")
 	private String type;
 
-	@Column(name = "error_detail")
+	@Column(name = "error_detail", columnDefinition = "text")
 	private String errorDetail;
 
 	@Column(name = "retry_count")
