@@ -11,8 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "subscription_detail_metadata",
-uniqueConstraints = @UniqueConstraint(columnNames = {"metadata_key", "subscription_detail"}))
+@Table(name = "subscription_detail_metadata", uniqueConstraints = @UniqueConstraint(columnNames = { "metadata_key",
+		"subscription_detail_id" }))
 public class JpaSubscriptionDetailMetadata {
 
 	/**

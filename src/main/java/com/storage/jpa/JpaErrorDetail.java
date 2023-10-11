@@ -19,10 +19,10 @@ public class JpaErrorDetail {
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_detail_id")
-	private JpaSubscriptionDetail jpaSubscriptionDetail;
+	private JpaSubscriptionDetail subscriptionDetail;
 
-	@Column(name = "error_code")
-	private Integer errorCode;
+	@Column(name = "type")
+	private String type;
 
 	@Column(name = "error_detail")
 	private String errorDetail;
@@ -45,31 +45,31 @@ public class JpaErrorDetail {
 	}
 
 	/**
-	 * @return the jpaSubscriptionDetail
+	 * @return the subscriptionDetail
 	 */
-	public JpaSubscriptionDetail getJpaSubscriptionDetail() {
-		return jpaSubscriptionDetail;
+	public JpaSubscriptionDetail getSubscriptionDetail() {
+		return subscriptionDetail;
 	}
 
 	/**
-	 * @param jpaSubscriptionDetail the jpaSubscriptionDetail to set
+	 * @param subscriptionDetail the subscriptionDetail to set
 	 */
-	public void setJpaSubscriptionDetail(JpaSubscriptionDetail jpaSubscriptionDetail) {
-		this.jpaSubscriptionDetail = jpaSubscriptionDetail;
+	public void setSubscriptionDetail(JpaSubscriptionDetail subscriptionDetail) {
+		this.subscriptionDetail = subscriptionDetail;
 	}
 
 	/**
-	 * @return the errorCode
+	 * @return the type
 	 */
-	public Integer getErrorCode() {
-		return errorCode;
+	public String getType() {
+		return type;
 	}
 
 	/**
-	 * @param errorCode the errorCode to set
+	 * @param type the type to set
 	 */
-	public void setErrorCode(Integer errorCode) {
-		this.errorCode = errorCode;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	/**

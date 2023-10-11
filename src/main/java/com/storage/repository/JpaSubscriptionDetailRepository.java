@@ -31,7 +31,12 @@ public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscr
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE JpaSubscriptionDetail s SET s.nextExecution = :nextExecution, s.lastExecution = :lastExecution, s.duration = :duration WHERE s.id = :id")
+	@Query("UPDATE JpaSubscriptionDetail s SET s.blacklist = :blacklist, s.updatedDate = CURRENT_TIMESTAMP WHERE s.id = :id")
+	void updateBlackListById(@Param("id") Long id, @Param("blacklist") Boolean blacklist);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE JpaSubscriptionDetail s SET s.nextExecution = :nextExecution, s.updatedDate = CURRENT_TIMESTAMP, s.lastExecution = :lastExecution, s.duration = :duration WHERE s.id = :id")
 	void updateNextExecution(@Param("id") Long id, @Param("nextExecution") OffsetDateTime nextExecution,
-			@Param("lastExecution") OffsetDateTime lastExecution, Integer duration);
+			@Param("lastExecution") OffsetDateTime lastExecution, @Param("duration") Integer duration);
 }
