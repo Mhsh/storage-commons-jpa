@@ -22,7 +22,7 @@ public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscr
 
 	List<JpaSubscriptionDetail> findBySubscription(JpaSubscription subscription);
 
-	List<JpaSubscriptionDetail> findByNextExecutionBefore(OffsetDateTime currentDate);
+	List<JpaSubscriptionDetail> findByNextExecutionBeforeAndBlacklistIsFalse(OffsetDateTime currentDate);
 
 	@Transactional
 	@Modifying

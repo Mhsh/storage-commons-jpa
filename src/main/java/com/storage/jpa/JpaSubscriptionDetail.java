@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,7 +20,11 @@ import com.storage.BaseEntity;
  * properties are key-value pairs related to connector metadata values.
  */
 @Entity
-@Table(name = "subscription_detail")
+@Table(name = "subscription_detail", indexes = {
+		@Index(name = "subscription_detail_exec_index", columnList = "nextExecution"),
+		@Index(name = "subscription_detail_content_index", columnList = "content"),
+		@Index(name = "subscription_detail_blacklist_index", columnList = "blacklist"),
+		@Index(name = "subscription_detail_subscription_index", columnList = "subscription_id") })
 public class JpaSubscriptionDetail extends BaseEntity {
 
 	/**
@@ -57,7 +62,7 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	private String content;
 
 	@Column(name = "blacklist")
-	private Boolean blacklist;
+	private Boolean blacklist = false;
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")

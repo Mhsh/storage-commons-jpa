@@ -7,14 +7,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.storage.BaseEntity;
 
 @Entity
-@Table(name = "rss_digest")
+@Table(name = "rss_digest", indexes = { @Index(name = "rss_digest_link_index", columnList = "link"),
+		@Index(name = "rss_digest_link_guid_index", columnList = "guid, subscription_id"),
+		@Index(name = "rss_digest_title_desc_index", columnList = "title, description, subscription_id"),
+		@Index(name = "rss_digest_link_pubData_index", columnList = "pubDate, subscription_id") }, uniqueConstraints = {
+				@UniqueConstraint(columnNames = { "title", "description", "subscription_id" }),
+				@UniqueConstraint(columnNames = { "guid", "subscription_id" }),
+				@UniqueConstraint(columnNames = { "link", "subscription_id" }),
+				@UniqueConstraint(columnNames = { "title", "description", "link", "guid", "subscription_id" }) })
 public class JpaRssDigest extends BaseEntity {
 
 	/**
