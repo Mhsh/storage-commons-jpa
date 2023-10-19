@@ -17,7 +17,9 @@ public interface JpaErrorDetailRepository extends JpaRepository<JpaErrorDetail, 
 	void deleteById(Long id);
 
 	@Transactional
-	void deleteBySubscriptionDetail(JpaSubscriptionDetail jpaSubscriptionDetail);
+	void deleteBySubscriptionDetailId(Long subscriptionDetailId);
+
+	boolean existsBySubscriptionDetailId(Long subscriptionDetailId);
 
 	Optional<JpaErrorDetail> findBySubscriptionDetailId(Long subscriptionDetailId);
 }

@@ -55,14 +55,14 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	@Column(name = "lastExecution", columnDefinition = "timestamp with time zone")
 	private OffsetDateTime lastExecution;
 
-	@Column(name = "rawFileLocation", nullable = false)
-	private String rawFileLocation;
-
 	@Column(name = "content")
 	private String content;
 
 	@Column(name = "blacklist")
 	private Boolean blacklist = false;
+
+	@Column(name = "bodyEnabled")
+	private Boolean isBodyEnabled = false;
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")
@@ -136,20 +136,6 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	}
 
 	/**
-	 * @return the rawFileLocation
-	 */
-	public String getRawFileLocation() {
-		return rawFileLocation;
-	}
-
-	/**
-	 * @param rawFileLocation the rawFileLocation to set
-	 */
-	public void setRawFileLocation(String rawFileLocation) {
-		this.rawFileLocation = rawFileLocation;
-	}
-
-	/**
 	 * @return the content
 	 */
 	public String getContent() {
@@ -194,15 +180,29 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	/**
 	 * @return the blacklist
 	 */
-	public Boolean isBlacklist() {
+	public Boolean isBlacklisted() {
 		return blacklist;
 	}
 
 	/**
 	 * @param blacklist the blacklist to set
 	 */
-	public void setBlacklist(Boolean blacklist) {
+	public void setBlacklisted(Boolean blacklist) {
 		this.blacklist = blacklist;
+	}
+
+	/**
+	 * @return the isBodyEnabled
+	 */
+	public Boolean isBodyEnabled() {
+		return isBodyEnabled;
+	}
+
+	/**
+	 * @param isBodyEnabled the isBodyEnabled to set
+	 */
+	public void setBodyEnabled(Boolean isBodyEnabled) {
+		this.isBodyEnabled = isBodyEnabled;
 	}
 
 }

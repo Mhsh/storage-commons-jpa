@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.storage.jpa.JpaRssDigest;
 import com.storage.jpa.JpaSubscription;
@@ -38,4 +39,5 @@ public interface JpaRssDigestRepository extends JpaRepository<JpaRssDigest, Long
 	JpaRssDigest findByGuid(String uri);
 
 	JpaRssDigest findByGuidAndSubscription(String guid, JpaSubscription jpaSubscription);
+
 }

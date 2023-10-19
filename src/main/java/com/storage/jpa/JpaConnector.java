@@ -54,6 +54,9 @@ public class JpaConnector extends BaseEntity {
 	@Column(name = "file_type", nullable = false)
 	private FileType fileType;
 
+	@Column(name = "smart_schedule_enabled", nullable = false)
+	private Boolean smartScheudle = false;
+
 	/**
 	 * Default constructor for JpaConnector.
 	 */
@@ -142,4 +145,19 @@ public class JpaConnector extends BaseEntity {
 	public void setFileType(FileType fileType) {
 		this.fileType = fileType;
 	}
+
+	/**
+	 * @return the smartScheudle
+	 */
+	public Boolean getSmartScheudle() {
+		return smartScheudle;
+	}
+
+	/**
+	 * @param smartScheudle the smartScheudle to set
+	 */
+	public void setSmartScheudle(Boolean smartScheudle) {
+		this.smartScheudle = smartScheudle;
+	}
+
 }

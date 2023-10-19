@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -51,6 +52,10 @@ public class JpaRssDigest extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")
 	private JpaSubscription subscription; // Many-to-one relationship to Subscription
+
+	@OneToOne
+	@JoinColumn(name = "subscription_detail_id", unique = true)
+	private JpaSubscriptionDetail subscriptionDetailId;
 
 	/**
 	 * @return the id
@@ -148,6 +153,20 @@ public class JpaRssDigest extends BaseEntity {
 	 */
 	public void setPubDate(Date pubDate) {
 		this.pubDate = pubDate;
+	}
+
+	/**
+	 * @return the subscriptionDetailId
+	 */
+	public JpaSubscriptionDetail getSubscriptionDetailId() {
+		return subscriptionDetailId;
+	}
+
+	/**
+	 * @param subscriptionDetailId the subscriptionDetailId to set
+	 */
+	public void setSubscriptionDetailId(JpaSubscriptionDetail subscriptionDetailId) {
+		this.subscriptionDetailId = subscriptionDetailId;
 	}
 
 }
