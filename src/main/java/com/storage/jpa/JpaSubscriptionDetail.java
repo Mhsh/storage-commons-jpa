@@ -34,6 +34,9 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "name", nullable = false)
+	private String name;
+
 	@Column(name = "properties", nullable = false)
 	private String properties;
 
@@ -203,6 +206,20 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	 */
 	public void setBodyEnabled(Boolean isBodyEnabled) {
 		this.isBodyEnabled = isBodyEnabled;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
