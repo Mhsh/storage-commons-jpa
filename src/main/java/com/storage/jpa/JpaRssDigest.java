@@ -1,6 +1,7 @@
 package com.storage.jpa;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,11 +29,12 @@ import com.storage.BaseEntity;
 public class JpaRssDigest extends BaseEntity {
 
 	/**
-	 * The unique identifier for the mapping.
+	 * The unique identifier for the entity.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private UUID id;
 
 	@Column(name = "title")
 	private String title;
@@ -60,14 +62,14 @@ public class JpaRssDigest extends BaseEntity {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

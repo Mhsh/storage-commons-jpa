@@ -1,6 +1,7 @@
 package com.storage.repository;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,7 +13,7 @@ import com.storage.jpa.JpaClientTemplate;
  * JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaClient entities.
  */
-public interface JpaClientTemplateRepository extends JpaRepository<JpaClientTemplate, Long> {
+public interface JpaClientTemplateRepository extends JpaRepository<JpaClientTemplate, UUID> {
 
 	/**
 	 * Retrieve a client template by the client's unique identifier (ID).

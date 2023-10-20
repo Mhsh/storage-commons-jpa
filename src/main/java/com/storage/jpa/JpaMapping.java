@@ -1,5 +1,7 @@
 package com.storage.jpa;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,11 +23,12 @@ import com.storage.BaseEntity;
 @Table(name = "etl_subscription_mapping")
 public class JpaMapping extends BaseEntity {
 	/**
-	 * The unique identifier for the mapping.
+	 * The unique identifier for the entity.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private UUID id;
 
 	/**
 	 * The subscription associated with the mapping.
@@ -57,7 +60,7 @@ public class JpaMapping extends BaseEntity {
 	 *
 	 * @return The mapping's identifier.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -66,7 +69,7 @@ public class JpaMapping extends BaseEntity {
 	 *
 	 * @param id The mapping's identifier to set.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

@@ -1,11 +1,11 @@
 package com.storage.repository;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.storage.jpa.JpaRssDigest;
 import com.storage.jpa.JpaSubscription;
@@ -16,7 +16,7 @@ import com.storage.jpa.JpaSubscription;
  * JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaRssDigest entities.
  */
-public interface JpaRssDigestRepository extends JpaRepository<JpaRssDigest, Long> {
+public interface JpaRssDigestRepository extends JpaRepository<JpaRssDigest, UUID> {
 
 	// Custom query to check if any of the content, title, or description already
 	// exists

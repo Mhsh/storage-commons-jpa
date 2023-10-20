@@ -1,6 +1,7 @@
 package com.storage.jpa;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,11 +29,12 @@ import com.storage.BaseEntity;
 public class JpaSubscriptionDetail extends BaseEntity {
 
 	/**
-	 * The unique identifier for the subscription property.
+	 * The unique identifier for the entity.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private UUID id;
 
 	@Column(name = "name", nullable = false)
 	private String name;
@@ -83,7 +85,7 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	 *
 	 * @return The property's identifier.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -92,7 +94,7 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	 *
 	 * @param id The property's identifier to set.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

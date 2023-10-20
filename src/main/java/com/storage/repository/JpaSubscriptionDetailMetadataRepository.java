@@ -1,6 +1,7 @@
 package com.storage.repository;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,7 +18,7 @@ import com.storage.jpa.JpaSubscriptionDetailMetadata;
  * extends the JpaRepository interface, providing CRUD (Create, Read, Update,
  * Delete) operations for JpaClient entities.
  */
-public interface JpaSubscriptionDetailMetadataRepository extends JpaRepository<JpaSubscriptionDetailMetadata, Long> {
+public interface JpaSubscriptionDetailMetadataRepository extends JpaRepository<JpaSubscriptionDetailMetadata, UUID> {
 
 	List<JpaSubscriptionDetailMetadata> findBySubscriptionDetail(JpaSubscriptionDetail subscritionDetail);
 

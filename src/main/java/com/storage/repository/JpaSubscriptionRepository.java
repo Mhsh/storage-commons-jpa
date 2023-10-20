@@ -1,5 +1,7 @@
 package com.storage.repository;
 
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.storage.jpa.JpaSubscription;
@@ -10,6 +12,6 @@ import com.storage.jpa.JpaSubscription;
  * JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaClient entities.
  */
-public interface JpaSubscriptionRepository extends JpaRepository<JpaSubscription, Long> {
+public interface JpaSubscriptionRepository extends JpaRepository<JpaSubscription, UUID> {
 
 }

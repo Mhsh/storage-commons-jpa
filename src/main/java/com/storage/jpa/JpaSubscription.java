@@ -2,8 +2,10 @@ package com.storage.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -27,11 +29,12 @@ import com.storage.BaseEntity;
 public class JpaSubscription extends BaseEntity {
 
 	/**
-	 * The unique identifier for the subscription.
+	 * The unique identifier for the entity.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private UUID id;
 
 	/**
 	 * The client associated with the subscription.
@@ -75,7 +78,7 @@ public class JpaSubscription extends BaseEntity {
 	 *
 	 * @return The subscription's identifier.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -84,7 +87,7 @@ public class JpaSubscription extends BaseEntity {
 	 *
 	 * @param id The subscription's identifier to set.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

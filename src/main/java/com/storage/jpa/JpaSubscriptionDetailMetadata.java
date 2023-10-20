@@ -1,5 +1,7 @@
 package com.storage.jpa;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +20,12 @@ import javax.persistence.UniqueConstraint;
 public class JpaSubscriptionDetailMetadata {
 
 	/**
-	 * The unique identifier for the mapping.
+	 * The unique identifier for the entity.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private UUID id;
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_detail_id")
@@ -37,14 +40,14 @@ public class JpaSubscriptionDetailMetadata {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

@@ -1,5 +1,7 @@
 package com.storage.jpa;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,9 +27,9 @@ public class JpaClientTemplate extends BaseEntity {
 	 * The unique identifier for the entity.
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Long id;
+	private UUID id;
 
 	/**
 	 * The one-to-one relationship with JpaClient.
@@ -47,7 +49,7 @@ public class JpaClientTemplate extends BaseEntity {
 	 *
 	 * @return The identifier of the entity.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -56,7 +58,7 @@ public class JpaClientTemplate extends BaseEntity {
 	 *
 	 * @param id The identifier to set.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

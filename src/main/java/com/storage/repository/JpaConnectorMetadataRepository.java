@@ -1,5 +1,7 @@
 package com.storage.repository;
 
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.storage.jpa.JpaConnectorMetadata;
@@ -10,6 +12,6 @@ import com.storage.jpa.JpaConnectorMetadata;
  * the JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaClient entities.
  */
-public interface JpaConnectorMetadataRepository extends JpaRepository<JpaConnectorMetadata, Long> {
+public interface JpaConnectorMetadataRepository extends JpaRepository<JpaConnectorMetadata, UUID> {
 
 }

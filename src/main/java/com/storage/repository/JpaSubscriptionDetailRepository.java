@@ -2,6 +2,7 @@ package com.storage.repository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -18,7 +19,7 @@ import com.storage.jpa.JpaSubscriptionDetail;
  * It extends the JpaSubscriptionDetailMetadata interface, providing CRUD
  * (Create, Read, Update, Delete) operations for JpaClient entities.
  */
-public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscriptionDetail, Long> {
+public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscriptionDetail, UUID> {
 
 	List<JpaSubscriptionDetail> findBySubscription(JpaSubscription subscription);
 

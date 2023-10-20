@@ -1,6 +1,7 @@
 package com.storage.repository;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -15,7 +16,7 @@ import com.storage.jpa.JpaSubscription;
  * JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaClient entities.
  */
-public interface JpaMappingRepository extends JpaRepository<JpaMapping, Long> {
+public interface JpaMappingRepository extends JpaRepository<JpaMapping, UUID> {
 
 	/**
 	 * Retrieves a list of JPA mappings associated with a specific subscription.

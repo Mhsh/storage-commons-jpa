@@ -1,6 +1,7 @@
 package com.storage.jpa;
 
 import java.util.Objects;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,12 +24,10 @@ import com.storage.BaseEntity;
 @Table(name = "connector_metadata")
 public class JpaConnectorMetadata extends BaseEntity {
 
-	/**
-	 * The unique identifier for the metadata.
-	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(columnDefinition = "UUID", updatable = false, nullable = false)
+	private UUID id;
 
 	/**
 	 * The associated JpaConnector entity to which this metadata belongs.
@@ -68,7 +67,7 @@ public class JpaConnectorMetadata extends BaseEntity {
 	 *
 	 * @return The metadata's identifier.
 	 */
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -77,7 +76,7 @@ public class JpaConnectorMetadata extends BaseEntity {
 	 *
 	 * @param id The metadata's identifier to set.
 	 */
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
