@@ -8,7 +8,7 @@ public class Enums {
 	}
 
 	public static enum FileType {
-		JSON("json"), XML("xml");
+		JSON("json"), XML("xml"), RSS("rss");
 
 		// Add more connector types as needed
 		private String type;

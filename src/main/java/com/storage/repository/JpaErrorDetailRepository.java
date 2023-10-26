@@ -15,12 +15,12 @@ public interface JpaErrorDetailRepository extends JpaRepository<JpaErrorDetail, 
 	List<JpaErrorDetail> findBySubscriptionDetail(JpaSubscriptionDetail jpaSubscriptionDetail);
 
 	@Transactional
-	void deleteById(Long id);
+	void deleteById(UUID id);
 
 	@Transactional
-	void deleteBySubscriptionDetailId(Long subscriptionDetailId);
+	void deleteBySubscriptionDetailId(UUID subscriptionDetailId);
 
-	boolean existsBySubscriptionDetailId(Long subscriptionDetailId);
+	boolean existsBySubscriptionDetailId(UUID subscriptionDetailId);
 
-	Optional<JpaErrorDetail> findBySubscriptionDetailId(Long subscriptionDetailId);
+	Optional<JpaErrorDetail> findBySubscriptionDetailId(UUID subscriptionDetailId);
 }

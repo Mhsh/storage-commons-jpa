@@ -36,7 +36,7 @@ public class JpaSubscriptionDetail extends BaseEntity {
 	@Column(name = "id")
 	private UUID id;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = false, unique = true)
 	private String name;
 
 	@Column(name = "properties", nullable = false)
