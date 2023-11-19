@@ -23,4 +23,20 @@ public class Enums {
 
 	}
 
+	public static enum EngineType {
+		INGESTION("ingestion"), TRANSFORMER("transformer");
+
+		// Add more connector types as needed
+		private String type;
+
+		EngineType(String type) {
+			this.type = type;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+	}
+
 }

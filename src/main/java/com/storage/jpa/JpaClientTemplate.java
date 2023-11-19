@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.storage.BaseEntity;
 
@@ -20,7 +21,7 @@ import com.storage.BaseEntity;
  * type. The unique identifier for this entity is 'id'.
  */
 @Entity
-@Table(name = "etl_client_template")
+@Table(name = "etl_client_template", uniqueConstraints = @UniqueConstraint(columnNames = { "client_id" }))
 public class JpaClientTemplate extends BaseEntity {
 
 	/**

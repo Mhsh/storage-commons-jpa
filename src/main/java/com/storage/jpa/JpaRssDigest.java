@@ -56,7 +56,7 @@ public class JpaRssDigest extends BaseEntity {
 	private JpaSubscription subscription; // Many-to-one relationship to Subscription
 
 	@OneToOne
-	@JoinColumn(name = "subscription_detail_id", unique = true)
+	@JoinColumn(name = "subscription_detail_id")
 	private JpaSubscriptionDetail subscriptionDetailId;
 
 	/**

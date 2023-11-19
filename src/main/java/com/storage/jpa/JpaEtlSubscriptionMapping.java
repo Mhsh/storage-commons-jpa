@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,8 +21,9 @@ import com.storage.BaseEntity;
  * subscriptions and keys.
  */
 @Entity
-@Table(name = "etl_subscription_mapping")
-public class JpaMapping extends BaseEntity {
+@Table(name = "etl_subscription_mapping",indexes = {
+		@Index(name = "etl_subscription_mapping_subscription_index", columnList = "subscription_id") })
+public class JpaEtlSubscriptionMapping extends BaseEntity {
 	/**
 	 * The unique identifier for the entity.
 	 */

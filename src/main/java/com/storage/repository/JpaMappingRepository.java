@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.storage.jpa.JpaMapping;
+import com.storage.jpa.JpaEtlSubscriptionMapping;
 import com.storage.jpa.JpaSubscription;
 
 /**
@@ -16,7 +16,7 @@ import com.storage.jpa.JpaSubscription;
  * JpaRepository interface, providing CRUD (Create, Read, Update, Delete)
  * operations for JpaClient entities.
  */
-public interface JpaMappingRepository extends JpaRepository<JpaMapping, UUID> {
+public interface JpaMappingRepository extends JpaRepository<JpaEtlSubscriptionMapping, UUID> {
 
 	/**
 	 * Retrieves a list of JPA mappings associated with a specific subscription.
@@ -25,7 +25,7 @@ public interface JpaMappingRepository extends JpaRepository<JpaMapping, UUID> {
 	 * @return A list of JPA mappings associated with the specified subscription, or
 	 *         an empty list if none are found.
 	 */
-	List<JpaMapping> findBySubscription(JpaSubscription subscription);
+	List<JpaEtlSubscriptionMapping> findBySubscription(JpaSubscription subscription);
 
 	@Transactional
 	public void deleteBySubscription(JpaSubscription subscription);

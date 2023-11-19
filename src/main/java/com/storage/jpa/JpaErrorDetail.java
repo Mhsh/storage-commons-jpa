@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.storage.jpa.Enums.ConnectorType;
+import com.storage.jpa.Enums.EngineType;
+
 @Entity
 @Table(name = "error_detail")
 public class JpaErrorDetail {
@@ -22,7 +25,6 @@ public class JpaErrorDetail {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private UUID id;
-
 
 	@ManyToOne
 	@JoinColumn(name = "subscription_detail_id")
@@ -36,6 +38,10 @@ public class JpaErrorDetail {
 
 	@Column(name = "retry_count")
 	private Integer retryCount;
+
+	private ConnectorType connectorType;
+
+	private EngineType engineType;
 
 	/**
 	 * @return the id
@@ -105,6 +111,34 @@ public class JpaErrorDetail {
 	 */
 	public void setRetryCount(Integer retryCount) {
 		this.retryCount = retryCount;
+	}
+
+	/**
+	 * @return the connectorType
+	 */
+	public ConnectorType getConnectorType() {
+		return connectorType;
+	}
+
+	/**
+	 * @param connectorType the connectorType to set
+	 */
+	public void setConnectorType(ConnectorType connectorType) {
+		this.connectorType = connectorType;
+	}
+
+	/**
+	 * @return the engineType
+	 */
+	public EngineType getEngineType() {
+		return engineType;
+	}
+
+	/**
+	 * @param engineType the engineType to set
+	 */
+	public void setEngineType(EngineType engineType) {
+		this.engineType = engineType;
 	}
 
 }

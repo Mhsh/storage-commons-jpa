@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.storage.jpa.Enums.ConnectorType;
 import com.storage.jpa.JpaSubscription;
 import com.storage.jpa.JpaSubscriptionDetail;
 
@@ -40,4 +41,9 @@ public interface JpaSubscriptionDetailRepository extends JpaRepository<JpaSubscr
 	@Query("UPDATE JpaSubscriptionDetail s SET s.nextExecution = :nextExecution, s.updatedDate = CURRENT_TIMESTAMP, s.lastExecution = :lastExecution, s.duration = :duration WHERE s.id = :id")
 	void updateNextExecution(@Param("id") UUID id, @Param("nextExecution") OffsetDateTime nextExecution,
 			@Param("lastExecution") OffsetDateTime lastExecution, @Param("duration") Integer duration);
+
+	@Query("SELECT COUNT(sd) FROM JpaSubscriptionDetail sd " + "JOIN sd.subscription s " + "JOIN s.connector c "
+			+ "WHERE c.id = :connectorType")
+	Long countByConnectorType(@Param("connectorType") ConnectorType connectorType);
+
 }
