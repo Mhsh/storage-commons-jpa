@@ -9,12 +9,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.storage.jpa.JpaErrorDetail;
+import com.storage.jpa.JpaETLFile;
+import com.storage.jpa.JpaIngestionErrorDetail;
 import com.storage.jpa.JpaSubscriptionDetail;
 
-public interface JpaErrorDetailRepository extends JpaRepository<JpaErrorDetail, UUID> {
+public interface JpaETLFileRepository extends JpaRepository<JpaETLFile, UUID> {
 
-	List<JpaErrorDetail> findBySubscriptionDetail(JpaSubscriptionDetail jpaSubscriptionDetail);
+	List<JpaIngestionErrorDetail> findBySubscriptionDetail(JpaSubscriptionDetail jpaSubscriptionDetail);
 
 	@Transactional
 	void deleteById(UUID id);
@@ -24,8 +25,8 @@ public interface JpaErrorDetailRepository extends JpaRepository<JpaErrorDetail, 
 
 	boolean existsBySubscriptionDetailId(UUID subscriptionDetailId);
 
-	Optional<JpaErrorDetail> findBySubscriptionDetailId(UUID subscriptionDetailId);
+	Optional<JpaIngestionErrorDetail> findBySubscriptionDetailId(UUID subscriptionDetailId);
 
-    @Query(value = "SELECT error_detail AS errorDetail, COUNT(*) AS count FROM error_detail GROUP BY error_detail", nativeQuery = true)
+	@Query(value = "SELECT error_detail AS errorDetail, COUNT(*) AS count FROM error_detail GROUP BY error_detail", nativeQuery = true)
 	List<Map<String, Long>> getCountGroupedByErrorDetail();
 }

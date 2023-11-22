@@ -12,11 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.storage.jpa.Enums.ConnectorType;
-import com.storage.jpa.Enums.EngineType;
+import com.storage.jpa.Enums.FileType;
 
 @Entity
-@Table(name = "error_detail")
-public class JpaErrorDetail {
+@Table(name = "error_etl_detail")
+public class JpaEtlErrorDetail {
 
 	/**
 	 * The unique identifier for the entity.
@@ -30,18 +30,15 @@ public class JpaErrorDetail {
 	@JoinColumn(name = "subscription_detail_id")
 	private JpaSubscriptionDetail subscriptionDetail;
 
-	@Column(name = "type", columnDefinition = "text")
-	private String type;
+	@Column(name = "error_type", columnDefinition = "text")
+	private String errorType;
 
 	@Column(name = "error_detail", columnDefinition = "text")
 	private String errorDetail;
 
-	@Column(name = "retry_count")
-	private Integer retryCount;
-
 	private ConnectorType connectorType;
 
-	private EngineType engineType;
+	private FileType fileType;
 
 	/**
 	 * @return the id
@@ -72,20 +69,6 @@ public class JpaErrorDetail {
 	}
 
 	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
 	 * @return the errorDetail
 	 */
 	public String getErrorDetail() {
@@ -97,20 +80,6 @@ public class JpaErrorDetail {
 	 */
 	public void setErrorDetail(String errorDetail) {
 		this.errorDetail = errorDetail;
-	}
-
-	/**
-	 * @return the retryCount
-	 */
-	public Integer getRetryCount() {
-		return retryCount;
-	}
-
-	/**
-	 * @param retryCount the retryCount to set
-	 */
-	public void setRetryCount(Integer retryCount) {
-		this.retryCount = retryCount;
 	}
 
 	/**
@@ -128,17 +97,31 @@ public class JpaErrorDetail {
 	}
 
 	/**
-	 * @return the engineType
+	 * @return the fileType
 	 */
-	public EngineType getEngineType() {
-		return engineType;
+	public FileType getFileType() {
+		return fileType;
 	}
 
 	/**
-	 * @param engineType the engineType to set
+	 * @param fileType the fileType to set
 	 */
-	public void setEngineType(EngineType engineType) {
-		this.engineType = engineType;
+	public void setFileType(FileType fileType) {
+		this.fileType = fileType;
+	}
+
+	/**
+	 * @return the errorType
+	 */
+	public String getErrorType() {
+		return errorType;
+	}
+
+	/**
+	 * @param errorType the errorType to set
+	 */
+	public void setErrorType(String errorType) {
+		this.errorType = errorType;
 	}
 
 }
