@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import com.storage.BaseEntity;
 import com.storage.jpa.Enums.ConnectorType;
+import com.storage.jpa.Enums.FileType;
 
 @Entity
 @Table(name = "etl_file")
@@ -30,6 +31,9 @@ public class JpaETLFile extends BaseEntity {
 	@JoinColumn(name = "subscription_detail_id")
 	private JpaSubscriptionDetail subscriptionDetail;
 
+	@ManyToOne
+	@JoinColumn(name = "subscription_id")
+	private JpaSubscription subscription; // Many-to-one relationship to Subscription
 	/**
 	 * The file path of the transformed data file.
 	 */
@@ -46,7 +50,7 @@ public class JpaETLFile extends BaseEntity {
 	 * The file type to be handled.
 	 */
 	@Column(name = "fileType")
-	private String fileType;
+	private FileType fileType;
 
 	private ConnectorType connectorType;
 
@@ -109,14 +113,14 @@ public class JpaETLFile extends BaseEntity {
 	/**
 	 * @return the fileType
 	 */
-	public String getFileType() {
+	public FileType getFileType() {
 		return fileType;
 	}
 
 	/**
 	 * @param fileType the fileType to set
 	 */
-	public void setFileType(String fileType) {
+	public void setFileType(FileType fileType) {
 		this.fileType = fileType;
 	}
 
@@ -132,6 +136,20 @@ public class JpaETLFile extends BaseEntity {
 	 */
 	public void setConnectorType(ConnectorType connectorType) {
 		this.connectorType = connectorType;
+	}
+
+	/**
+	 * @return the subscription
+	 */
+	public JpaSubscription getSubscription() {
+		return subscription;
+	}
+
+	/**
+	 * @param subscription the subscription to set
+	 */
+	public void setSubscription(JpaSubscription subscription) {
+		this.subscription = subscription;
 	}
 
 }

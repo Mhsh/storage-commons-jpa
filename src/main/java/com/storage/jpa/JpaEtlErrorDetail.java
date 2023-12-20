@@ -30,6 +30,10 @@ public class JpaEtlErrorDetail {
 	@JoinColumn(name = "subscription_detail_id")
 	private JpaSubscriptionDetail subscriptionDetail;
 
+	@ManyToOne
+	@JoinColumn(name = "subscription_id")
+	private JpaSubscription subscription; // Many-to-one relationship to Subscription
+
 	@Column(name = "error_type", columnDefinition = "text")
 	private String errorType;
 
@@ -122,6 +126,20 @@ public class JpaEtlErrorDetail {
 	 */
 	public void setErrorType(String errorType) {
 		this.errorType = errorType;
+	}
+
+	/**
+	 * @return the subscription
+	 */
+	public JpaSubscription getSubscription() {
+		return subscription;
+	}
+
+	/**
+	 * @param subscription the subscription to set
+	 */
+	public void setSubscription(JpaSubscription subscription) {
+		this.subscription = subscription;
 	}
 
 }

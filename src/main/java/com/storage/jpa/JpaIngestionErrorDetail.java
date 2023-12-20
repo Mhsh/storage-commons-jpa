@@ -40,6 +40,10 @@ public class JpaIngestionErrorDetail {
 
 	private ConnectorType connectorType;
 
+	@ManyToOne
+	@JoinColumn(name = "subscription_id")
+	private JpaSubscription subscription; // Many-to-one relationship to Subscription
+
 	/**
 	 * @return the id
 	 */
@@ -122,6 +126,20 @@ public class JpaIngestionErrorDetail {
 	 */
 	public void setConnectorType(ConnectorType connectorType) {
 		this.connectorType = connectorType;
+	}
+
+	/**
+	 * @return the subscription
+	 */
+	public JpaSubscription getSubscription() {
+		return subscription;
+	}
+
+	/**
+	 * @param subscription the subscription to set
+	 */
+	public void setSubscription(JpaSubscription subscription) {
+		this.subscription = subscription;
 	}
 
 }
